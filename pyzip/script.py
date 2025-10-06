@@ -5,13 +5,6 @@ from pathlib import Path
 program_folder = Path(__file__).parent
 file_to_add = ''
 
-try:
-    with ZipFile('zipfile.zip', 'w') as dotzip:
-        for roots, dirs, files in os.walk(program_folder):
-            for file in files:
-                if not file in 'script.py':
-                    dotzip.write(str(file), arcname=file)
+with ZipFile('zipfile.zip', 'w') as dotzip:
+    dotzip.write(f'{program_folder}')
 
-
-except Exception as e:
-    print(e)
